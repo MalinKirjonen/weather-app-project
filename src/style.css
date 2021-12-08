@@ -43,6 +43,14 @@ footer {
   font-size: 10px;
   padding: 40px;
 }
+
+.weatherAppBoarder {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  boarder: 2px solid #black;
+}
+
 .degrees {
   color: black;
 }
