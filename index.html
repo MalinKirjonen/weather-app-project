@@ -46,8 +46,13 @@
           <ul>
             <h4 class="dayAndTime"></h4>
             <li class="typeOfWeather" id="display-comment"></li>
-
-            <li class="daily-cloud" id="cloudEmoji"></li>
+            <span id="weatherEmoji">
+              <img
+                src="http://openweathermap.org/img/wn/10d@2x.png"
+                alt="weather-icon"
+                class="icon"
+                id="weather-icon"
+            /></span>
 
             <h2>
               <span class="temfahrenheit-linkperature" id="temperature"></span>
@@ -56,15 +61,13 @@
           </ul>
 
           <div class="row extra-updates">
-            <div class="col-2">Humidity: <span id="humidity"> </span>%</div>
-            <div class="col-2">|</div>
-            <div class="col-2">
-              Lowest temperature <span id="minTemp"> </span>°C
-            </div>
-            <div class="col-2">|</div>
-            <div class="col-2">
-              Highest temperature <span id="maxTemp"> </span>°C
-            </div>
+            <div class="col-1">◎ Humidity: <span id="humidity"> </span>%</div>
+            <div class="col-1">|</div>
+            <div class="col-1">▼ Temp <span id="minTemp"> </span>°C</div>
+            <div class="col-1">|</div>
+            <div class="col-1">▲ Temp <span id="maxTemp"> </span>°C</div>
+            <div class="col-1">|</div>
+            <div class="col-1">▲ Wind <span id="maxWind"> </span>km/h</div>
           </div>
 
           <div class="card predictedCard">

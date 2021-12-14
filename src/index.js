@@ -20,16 +20,32 @@ let h4 = document.querySelector("h4");
 h4.innerHTML = `${day} ${hour}:${minute}`;
 
 function displayWeatherCondition(response) {
+  let iconElement = document.querySelector("#weather-icon");
+
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
   );
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#minTemp").innerHTML = response.data.main.temp_min;
-  document.querySelector("#maxTemp").innerHTML = response.data.main.temp_max;
+  document.querySelector("#humidity").innerHTML = Math.round(
+    response.data.main.humidity
+  );
+  document.querySelector("#minTemp").innerHTML = Math.round(
+    response.data.main.temp_min
+  );
+  document.querySelector("#maxTemp").innerHTML = Math.round(
+    response.data.main.temp_max
+  );
   document.querySelector("#display-comment").innerHTML =
     response.data.weather[0].main;
   console.log(response.data);
+
+  document.querySelector("#maxWind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
+  iconElement.setAttribute(
+    "scr",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
 function searchCity(city) {
