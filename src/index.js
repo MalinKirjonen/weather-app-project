@@ -19,7 +19,8 @@ if (minute < 10) {
 let h4 = document.querySelector("h4");
 h4.innerHTML = `${day} ${hour}:${minute}`;
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
@@ -50,6 +51,14 @@ function displayForecast() {
   console.log(forecastHTML);
 }
 
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "298d0fec31aed96caba46c7daf227fb8";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function displayWeatherCondition(response) {
   let iconElement = document.querySelector("#weather-icon");
 
@@ -70,7 +79,6 @@ function displayWeatherCondition(response) {
   );
   document.querySelector("#display-comment").innerHTML =
     response.data.weather[0].main;
-  console.log(response.data);
 
   document.querySelector("#maxWind").innerHTML = Math.round(
     response.data.wind.speed
@@ -80,6 +88,8 @@ function displayWeatherCondition(response) {
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+
+  getForecast(response.data.coord);
 }
 
 function searchCity(city) {
@@ -148,4 +158,3 @@ let currentLocationButton = document.querySelector("#current-location");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
 searchCity("Cape Town");
-displayForecast();
