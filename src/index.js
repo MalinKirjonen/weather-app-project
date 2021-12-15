@@ -45,7 +45,7 @@ function displayWeatherCondition(response) {
     response.data.wind.speed
   );
   iconElement.setAttribute(
-    "scr",
+    "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
 }
