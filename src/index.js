@@ -19,6 +19,37 @@ if (minute < 10) {
 let h4 = document.querySelector("h4");
 h4.innerHTML = `${day} ${hour}:${minute}`;
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+       <div class="col-2">
+         <div class="weather-forecast-date">${day}</div>
+         <img
+           src="https://openweathermap.org/img/wn/10d@2x.png"
+           alt=""
+           width="42"
+         />
+         <div class="weather-forecast-temperatures">
+           <span class="weather-forecast-temperatures-max">18°</span>
+
+           <span class="weather-forecast-temperatures-min">12°</span>
+         </div>
+       </div>
+     
+     `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
+
 function displayWeatherCondition(response) {
   let iconElement = document.querySelector("#weather-icon");
 
@@ -44,6 +75,7 @@ function displayWeatherCondition(response) {
   document.querySelector("#maxWind").innerHTML = Math.round(
     response.data.wind.speed
   );
+
   iconElement.setAttribute(
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
@@ -116,21 +148,4 @@ let currentLocationButton = document.querySelector("#current-location");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
 searchCity("Cape Town");
-
-//Change to Celsius
-//function showCelsius(event) {
-//event.preventDefault();
-//let celsius = document.querySelector("h2");
-//celsius.innerHTML = "19";
-//}
-//let displaycelsius = document.querySelector("#celsius");
-//displaycelsius.addEventListener("click", showCelsius);
-
-//Change to fahrenheit
-//function showFahrenheit(event) {
-//event.preventDefault();
-//let fahrenheit = document.querySelector("h2");
-// fahrenheit.innerHTML = "66";
-//}
-//let displayFahrenheit = document.querySelector("#fahrenheit");
-//displayFahrenheit.addEventListener("click", showFahrenheit);
+displayForecast();
